@@ -27,7 +27,7 @@ test = matches[matches['date'] > '2022-01-01']
 predictors = ['venue_code', 'opp_code', 'hour', 'day_code']
 rf.fit(train[predictors], train['target'])
 preds = rf.predict(test[predictors])
-acc = accuracy_score(test['target'], preds)
+acc = accuracy_score(test['target'], preds) # this is a built in accuracy test that asserts how many predictions were correct. 
 # answer is 0.6123188405797102 meaning 61% of time what we predicted came true. 
 
 # create combined df with actual and predicted values to see in which situations our accuracy was high vs. low. 
