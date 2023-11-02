@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score
 
-matches = pd.read_csv("matches2.csv", index_col=0)
+matches = pd.read_csv("matches_prem.csv", index_col=0)
 # ML engine requires data to be numeric (float or int). So some conversions must take place. 
 # print(matches.dtypes) # highlights some columns that we'd like to use as predictors are objects. Some conversion must occur.
 # convert date column
