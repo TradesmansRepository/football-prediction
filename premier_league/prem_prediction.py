@@ -43,6 +43,8 @@ precision = precision_score(test['target'], preds)
 grouped_matches = matches.groupby('team')
 group = grouped_matches.get_group('Manchester City')
 
+print(group.dtypes)
+
 def rolling_averages(group, cols, new_cols):
     group = group.sort_values('date')
     rolling_stats = group[cols].rolling(3, closed='left').mean() # closed=left disregards future data (which the dataset knows but we don't want the model to use).
@@ -88,7 +90,6 @@ map_values = {
 mapping = MissingDict(**map_values)
 combined['new_team'] = combined['team'].map(mapping)
 merged = combined.merge(combined, left_on=['date', 'new_team'], right_on=['date', 'opponent'])
-# merged[(merged['predicted_x'] == 1) & (merged['predicted_y'] == 0)]['actual_x'].value_counts()
 
 print(merged[(merged['predicted_x'] == 1) & (merged['predicted_y'] == 0)]['actual_x'].value_counts())
 # actual_x
